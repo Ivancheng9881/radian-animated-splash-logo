@@ -30,64 +30,21 @@ function Triangle2() {
   );
 }
 
-
-
 function App() {
   const [toggle, setToggle] = useState(false);
-  const [completed, setCompleted] = useState(false);
 
-  
-
-  // useEffect(() => {
-  //   setToggle = true;
-  // }, []);
   const fragments = [
     <Triangle1 key="envelope-1" />,
     <Triangle2 key="envelope-2" />,
-    <LargeElement key="envelope-3" />, 
+    <LargeElement key="envelope-3" />,
   ];
-
-  // const springs = useSprings(
-  //   fragments.length,
-  //   fragments.map((_, i) => {
-  //     return {
-  //       transform: toggle
-  //         ? `translate3d(0px, 0px, 0px)`
-  //         : `translate3d(-400px, 0px, 0px)`,
-  //       opacity: toggle ? 1 : 0,
-  //       delay: i * 100,
-  //     };
-  //   })
-  // );
-
-  // const animationsLol = [
-  //   {
-  //     "rotate(0deg) scale(1)": "rotate(90deg) scale(0)",
-  //   },
-  //   {
-  //     "rotate(0deg) scale(1)": "rotate(-90deg) scale(0)",
-  //   },
-  //   {
-  //     "rotate(0deg) scale(1)": "rotate(-90deg) scale(0)",
-  //   },
-  // ];
 
   const animationsLol = [
     ["rotate(0deg) scale(1)", "rotate(90deg) scale(0)"],
     ["rotate(0deg) scale(1)", "rotate(-90deg) scale(0)"],
     [`translate3d(0px, 0px, 0px)`, `translate3d(-400px, -400px, 0px)`],
   ];
-  //  "rotate(0deg) scale(1), rotate(90deg) scale(0)"
-  // lower triangle
-  const springs1 = useSprings(
-    fragments.length,
-    fragments.map((_, i) => ({
-      transform: toggle ? "rotate(0deg) scale(1)" : "rotate(90deg) scale(0)",
-      delay: i * 100,
-    }))
-  );
 
-  // upper triangle
   const springs2 = useSprings(
     fragments.length,
     fragments.map((_, i) => ({
@@ -95,19 +52,6 @@ function App() {
       delay: i * 500,
     }))
   );
-
-  // const animationLoop = useSprings(
-  //   fragments.length,
-  //   fragments.map((_,i) => ({
-  //     transform
-  //   }))
-  // )
-
-  // const animatedEnvelopes = springs1.map((animatedStyle, index) => (
-  //   <animated.g key={index} style={animatedStyle}>
-  //     {fragments[index]}
-  //   </animated.g>
-  // ));
 
   const animatedIcons = springs2.map((style, index) => (
     <animated.g
